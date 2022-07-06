@@ -1,0 +1,14 @@
+//
+// Created by jayse on 06/07/2022.
+//
+
+#ifndef ELABORATO_SENONER_JAY_TRANSACTION_H
+#define ELABORATO_SENONER_JAY_TRANSACTION_H
+
+
+class Transaction {
+
+};
+
+
+#endif //ELABORATO_SENONER_JAY_TRANSACTION_H
