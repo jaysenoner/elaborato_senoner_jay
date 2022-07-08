@@ -9,7 +9,7 @@ class DateTests : public ::testing::Test {
 
 
 protected:
-    Date d;
+    Date d{};
 
 
 
@@ -21,9 +21,7 @@ protected:
 
     }
 
-    void TearDown() override {
 
-    }
 
 
 

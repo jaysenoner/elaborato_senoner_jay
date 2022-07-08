@@ -36,7 +36,7 @@ void  Date::printDate() const  {
 }
 
 //Checks if the given date is valid or not
-bool Date::isValidDate(int day,int month,int year) const {
+ bool Date::isValidDate(int day,int month,int year)  {
 
     return day > 0 && day <= getMaxNumOfDays(month, year) &&
            month > 0 && month <= 12 &&

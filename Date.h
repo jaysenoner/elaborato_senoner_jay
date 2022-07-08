@@ -16,12 +16,12 @@ private:
     int month;
     int year;
     static int getMaxNumOfDays(int month,int year);
-    const int minimum_date_year = 1900;
-    const int current_date_year = 2022;
-    bool isValidDate(int day,int month,int year) const;
+    static const int minimum_date_year = 1900;
+    static const int current_date_year = 2022;
+
 
 public:
-
+    static bool isValidDate(int day,int month,int year) ;
     void printDate() const;
     Date() = default;
     Date(int day,int month,int year) {
@@ -30,7 +30,7 @@ public:
             this->month = month;
             this->year = year;
         }
-        else std::cerr<<"Inserire una data valida!"<<std::endl;
+        else std::cerr<<"Insert a valid date!"<<std::endl;
 
     }
 
