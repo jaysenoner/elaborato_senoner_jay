@@ -58,3 +58,7 @@ int Date::getMaxNumOfDays(int month, int year) {
         return maxDays[month];
     }
 
+bool Date::operator==(const Date &d) const {
+    return this->day == d.day && this->month == d.month && this->year == d.year;
+}
+

@@ -9,4 +9,4 @@ set(SOURCE_FILES Date.cpp Date.h Transaction.cpp Transaction.h)
 
 add_executable(elaborato_senoner_jay main.cpp)
 add_library(core ${SOURCE_FILES})
-
+target_link_libraries(elaborato_senoner_jay core)

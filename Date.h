@@ -18,10 +18,12 @@ private:
     static int getMaxNumOfDays(int month,int year);
     const int minimum_date_year = 1900;
     const int current_date_year = 2022;
+    bool isValidDate(int day,int month,int year) const;
 
 public:
 
     void printDate() const;
+    Date() = default;
     Date(int day,int month,int year) {
         if(isValidDate(day,month,year)){
             this->day = day;
@@ -32,7 +34,7 @@ public:
 
     }
 
-    bool isValidDate(int day,int month,int year) const;
+
     //Getters and Setters
     int getDay() const;
     void setDay(int day);
@@ -40,6 +42,7 @@ public:
     void setMonth(int month);
     int getYear() const;
     void setYear(int year);
+    bool operator==(const Date& d) const;
 
 };
 
