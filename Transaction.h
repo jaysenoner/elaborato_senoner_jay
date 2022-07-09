@@ -9,13 +9,15 @@
 #include <iomanip>
 #include "Date.h"
 
+
 class Transaction {
     private:
         std::string description;
-        float sum;
+        float sum{};
         std::string iban;
         const int precision = 2;        //Fixed precision that we use(along with setprecision()) to print and read values
-        Date date;
+        Date date{};
+
 
     public:
         Transaction() = default;
@@ -24,37 +26,24 @@ class Transaction {
         description(std::move(description)),sum(sum),iban(std::move(iban)), date(Date(day,month,year)) {
 
         };
+        Transaction(std::string description,float sum,std::string iban,Date& date) :
+                description(std::move(description)),sum(sum),iban(std::move(iban)), date(date) {
+
+        };
+
         void printTransaction();
 
 
         //Getters and Setters
-        const std::string &getDescription() const {
-            return description;
-        }
-        void setDescription(const std::string &description) {
-            Transaction::description = description;
-        }
-        float getSum() const {
-            return sum;
-        }
-        void setSum(float sum) {
-            Transaction::sum = sum;
-        }
-        const std::string &getIban() const {
-            return iban;
-        }
-        void setIban(const std::string &iban) {
-            Transaction::iban = iban;
-        }
-        const int getPrecision() const {
-            return precision;
-        }
-        const Date &getDate() const {
-            return date;
-        }
-        void setDate(const Date &date) {
-            Transaction::date = date;
-        }
+        const std::string &getDescription() const;
+        void setDescription(const std::string &description);
+        float getSum() const;
+        void setSum(float sum);
+        const std::string &getIban() const;
+        void setIban(const std::string &iban);
+        const int getPrecision() const;
+        const Date &getDate() const;
+        void setDate(const Date &date);
 
 
 };

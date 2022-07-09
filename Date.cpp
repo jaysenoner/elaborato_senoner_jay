@@ -28,11 +28,15 @@ void Date::setYear(int year) {
     Date::year = year;
 }
 
-//Prints the date in the standard italian format+
+//Prints the date in the standard italian format
 void  Date::printDate() const  {
 
     std::cout<<this->day<<"/"<<this->month<<"/"<<this->year<<std::endl;
 
+}
+
+std::string Date::dateToString() const {
+    return std::to_string(day) + "/" + std::to_string(month) + "/" + std::to_string(year);
 }
 
 //Checks if the given date is valid or not

@@ -22,6 +22,7 @@ private:
 
 public:
     static bool isValidDate(int day,int month,int year) ;
+    std::string dateToString() const;
     void printDate() const;
     Date() = default;
     Date(int day,int month,int year) {
