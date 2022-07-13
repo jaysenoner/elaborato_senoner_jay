@@ -1,15 +1,20 @@
-Acquisto presso apple store
-17/9/1999
+Acquisto presso apple
+17/9/1999 alle 13:29
 IT734284728293743298
-1000
+EUR1000
 
-Acquisto presso apple store
-17/9/1999
+Acquisto presso apple
+17/9/1999 alle 13:29
 IT734284728293743298
-1000
+EUR.1000
 
-Acquisto presso apple store
-17/9/1999
+Acquisto presso apple
+17/9/1999 alle 13:29
 IT734284728293743298
-1000
+EUR 1000
+
+Acquisto presso apple
+17/9/1999 alle 13:29
+IT734284728293743298
+EUR 1000
 

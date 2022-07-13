@@ -8,6 +8,7 @@
 #include <utility>
 #include <iomanip>
 #include "Date.h"
+#include "Hour.h"
 
 
 class Transaction {
@@ -15,19 +16,19 @@ class Transaction {
         std::string description;
         float sum{};
         std::string iban;
-        const int precision = 2;        //Fixed precision that we use(along with setprecision()) to print and read values
+        const int precision = 2;        //Fixed precision that we use(along with std::setprecision()) to print and read values
         Date date{};
-
+        Hour t_hour{};
 
     public:
         Transaction() = default;
         ~Transaction() = default;
-        Transaction(std::string description,float sum,std::string iban,int day,int month,int year) :
-        description(std::move(description)),sum(sum),iban(std::move(iban)), date(Date(day,month,year)) {
+        Transaction(std::string description,float sum,std::string iban,int day,int month,int year,int hour,int min) :
+        description(std::move(description)),sum(sum),iban(std::move(iban)), date(day,month,year),t_hour(hour,min) {
 
         };
-        Transaction(std::string description,float sum,std::string iban,Date& date) :
-                description(std::move(description)),sum(sum),iban(std::move(iban)), date(date) {
+        Transaction(std::string description,float sum,std::string iban,Date& date,Hour& hour) :
+                description(std::move(description)),sum(sum),iban(std::move(iban)), date(date),t_hour(hour) {
 
         };
 
@@ -36,14 +37,10 @@ class Transaction {
 
         //Getters and Setters
         const std::string &getDescription() const;
-        void setDescription(const std::string &description);
         float getSum() const;
-        void setSum(float sum);
         const std::string &getIban() const;
-        void setIban(const std::string &iban);
-        const int getPrecision() const;
         const Date &getDate() const;
-        void setDate(const Date &date);
+        const Hour getTHour() const;
 
 
 };

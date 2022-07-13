@@ -27,7 +27,7 @@ protected:
 
 };
 
-TEST_F(DateTests,TestConstructor){
+TEST_F(DateTests,DateConstructor){
 
     EXPECT_EQ(Date(17,9,1999),d);
 }

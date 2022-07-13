@@ -4,14 +4,13 @@
 #include "BankAccount.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    system("cd");
 
     Date d(17,9,1999);
-    Transaction t("Acquisto presso apple store",1000,"IT734284728293743298",d);
+    Hour h(13,29);
+    Transaction t("Acquisto presso apple",1000,"IT734284728293743298",d,h);
     BankAccount myBank;
     myBank.writeTransaction(t);
-
+    myBank.readTransactionsFile();
 
 
 

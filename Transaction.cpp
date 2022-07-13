@@ -17,34 +17,25 @@ const std::string &Transaction::getDescription() const {
     return description;
 }
 
-void Transaction::setDescription(const std::string &description) {
-    Transaction::description = description;
-}
 
 float Transaction::getSum() const {
     return sum;
 }
 
-void Transaction::setSum(float sum) {
-    Transaction::sum = sum;
-}
+
 
 const std::string &Transaction::getIban() const {
     return iban;
 }
 
-void Transaction::setIban(const std::string &iban) {
-    Transaction::iban = iban;
-}
 
-const int Transaction::getPrecision() const {
-    return precision;
-}
 
 const Date &Transaction::getDate() const {
     return date;
 }
 
-void Transaction::setDate(const Date &date) {
-    Transaction::date = date;
+const Hour Transaction::getTHour() const {
+    return t_hour;
 }
+
+
