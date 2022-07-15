@@ -1,12 +1,14 @@
-Acquisto presso apple
-17/9/1999 alle 13:29
-IT734284728293743298
-EUR1000
+Total Balance: EUR 4000.000000;
 
 Acquisto presso apple
 17/9/1999 alle 13:29
 IT734284728293743298
-EUR.1000
+EUR 1000
+
+Acquisto presso apple
+17/9/1999 alle 13:29
+IT734284728293743298
+EUR 1000
 
 Acquisto presso apple
 17/9/1999 alle 13:29

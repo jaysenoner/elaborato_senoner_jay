@@ -8,6 +8,7 @@
 
 #include <list>
 #include <fstream>
+#include <sstream>
 #include "Transaction.h"
 
 class BankAccount {
@@ -35,9 +36,10 @@ public:
     }
     void readTransactionsFile();
     void writeTransaction(const Transaction& transaction);
-    void writeAllTransactions();
-
-
+    float readTotalBalance();
+    bool isInTheRed1() const;
+    float extractFloatFromString(std::string tmp_string);
+    void writeTotalBalance();
 };
 
 
