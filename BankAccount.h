@@ -9,30 +9,36 @@
 #include <list>
 #include <fstream>
 #include <sstream>
+#include <utility>
 #include "Transaction.h"
 
 class BankAccount {
 
 private:
-    std::list<Transaction*> transactionList;
+
     const int precision = 2;
     float totalBalance;
     bool isInTheRed;
     std::fstream transactionsFile;
+    std::string myIban;
     void updateAccount(const Transaction &transaction);
 
 public:
-    explicit BankAccount(float totalBalance=0,bool isInTheRed=false) : totalBalance(totalBalance), isInTheRed(isInTheRed) {
+
+    explicit BankAccount(std::string myIban,float totalBalance=0,bool isInTheRed=false) :myIban(std::move(myIban)), totalBalance(totalBalance), isInTheRed(isInTheRed) {
         transactionsFile.open("src/transactions_file.txt",std::ios::app | std::ios::in);
         if(!transactionsFile.is_open()){
-            std::cerr<<"Failed to open transactions file"<<std::endl;
+
             throw std::runtime_error("Failed to open transactions file");
+        }
+        else {
+            totalBalance = BankAccount::readTotalBalance();
+            if(totalBalance<0) this->isInTheRed = true;
         }
     };
     ~BankAccount(){
         transactionsFile.close();
-        for(auto i : transactionList)
-            delete i;
+
     }
     void readTransactionsFile();
     void writeTransaction(const Transaction& transaction);
@@ -40,6 +46,7 @@ public:
     bool isInTheRed1() const;
     float extractFloatFromString(std::string tmp_string);
     void writeTotalBalance();
+    const std::string &getMyIban() const;
 };
 
 

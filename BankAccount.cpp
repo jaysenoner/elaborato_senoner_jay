@@ -10,6 +10,7 @@ void BankAccount::readTransactionsFile() {
 
     std::string tmp;
     transactionsFile.seekg(0);
+
     while(std::getline(transactionsFile,tmp))
         std::cout<<tmp<<std::endl;
 
@@ -19,19 +20,21 @@ void BankAccount::readTransactionsFile() {
 //Updates the total balance of the account and determines if the account is in the red
 void BankAccount::writeTransaction(const Transaction &transaction) {
 
-    transactionsFile << transaction.getDescription() <<std::endl;
+    std::ofstream transactionsFile;
+    transactionsFile.open("src/transactions_file.txt",std::ios::app);
+
+
+    transactionsFile << transaction.getDescription() << std::endl;
     transactionsFile << transaction.getDate().dateToString();
     transactionsFile << " alle ";
-    transactionsFile << transaction.getTHour().hourToString() <<std::endl;
-    transactionsFile << transaction.getIban()  <<std::endl;
-    transactionsFile <<"EUR "<< transaction.getSum() <<std::endl;
-    transactionsFile<<std::endl;
-
+    transactionsFile << transaction.getTHour().hourToString() << std::endl;
+    transactionsFile << transaction.getIban() << std::endl;
+    transactionsFile << "EUR " << transaction.getSum() << std::endl;
+    transactionsFile << std::endl;
+    transactionsFile.close();
     updateAccount(transaction);
-
-
-
 }
+
 
 
 //Private method that updates the total balance of the account and determines if the account is in the red
@@ -102,6 +105,10 @@ void BankAccount::writeTotalBalance() {
             transactionsFile.open("src/transactions_file.txt");
 
 
+}
+
+const std::string &BankAccount::getMyIban() const {
+    return myIban;
 }
 
 

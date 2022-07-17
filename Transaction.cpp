@@ -4,14 +4,7 @@
 
 #include "Transaction.h"
 
-void Transaction::printTransaction() {
 
-    std::cout<<"Description: "<< description <<std::endl;
-    std::cout<<"Iban: "<< iban<<std::endl;
-    std::cout<<"Date: ";
-    date.printDate();
-    std::cout<<"Sum:"<<std::setprecision(precision) << sum  <<std::endl;
-}
 
 const std::string &Transaction::getDescription() const {
     return description;
@@ -36,6 +29,10 @@ const Date &Transaction::getDate() const {
 
 const Hour Transaction::getTHour() const {
     return t_hour;
+}
+
+bool Transaction::isACharge1() const {
+    return isACharge;
 }
 
 

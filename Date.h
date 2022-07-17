@@ -21,7 +21,7 @@ private:
 
 
 public:
-    static bool isValidDate(int day,int month,int year) ;
+    static bool isValidDate(int day,int month,int year) ; //TODO: Make a future date invalid
     std::string dateToString() const;
     void printDate() const;
     Date() = default;
@@ -31,7 +31,10 @@ public:
             this->month = month;
             this->year = year;
         }
-        else std::cerr<<"Insert a valid date!"<<std::endl;
+        else {
+
+            throw std::runtime_error("Insert a valid date!");
+        }
 
     }
 

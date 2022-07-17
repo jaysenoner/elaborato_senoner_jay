@@ -10,29 +10,32 @@
 #include "Date.h"
 #include "Hour.h"
 
-
+// TODO: Make precision work
 class Transaction {
     private:
         std::string description;
         float sum{};
         std::string iban;
-        const int precision = 2;        //Fixed precision that we use(along with std::setprecision()) to print and read values
+      //const int precision = 2;        //Fixed precision that we use(along with std::setprecision()) to print and read values
         Date date{};
         Hour t_hour{};
+        bool isACharge{};
 
     public:
         Transaction() = default;
         ~Transaction() = default;
         Transaction(std::string description,float sum,std::string iban,int day,int month,int year,int hour,int min) :
         description(std::move(description)),sum(sum),iban(std::move(iban)), date(day,month,year),t_hour(hour,min) {
-
+            if(sum<0) isACharge = true;
+            else isACharge = false;
         };
         Transaction(std::string description,float sum,std::string iban,Date& date,Hour& hour) :
                 description(std::move(description)),sum(sum),iban(std::move(iban)), date(date),t_hour(hour) {
-
+                    if(sum<0) isACharge = true;
+                    else isACharge = false;
         };
 
-        void printTransaction();
+
 
 
         //Getters and Setters
@@ -41,7 +44,7 @@ class Transaction {
         const std::string &getIban() const;
         const Date &getDate() const;
         const Hour getTHour() const;
-
+        bool isACharge1() const;
 
 };
 

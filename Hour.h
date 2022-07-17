@@ -19,7 +19,9 @@ public:
             this->hour = hour;
             this->min = min;
         }
-        else std::cerr<<"Insert a valid hour!"<<std::endl;
+        else {
+            throw std::runtime_error("Insert a valid hour!");
+        }
 
     }
     std::string hourToString() const;
