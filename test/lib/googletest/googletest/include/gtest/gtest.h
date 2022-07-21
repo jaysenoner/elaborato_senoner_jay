@@ -387,7 +387,7 @@ class GTEST_API_ TestResult {
   // D'tor.  Do not inherit from TestResult.
   ~TestResult();
 
-  // Gets the number of all test parts.  This is the sum of the number
+  // Gets the number of all test parts.  This is the amount of the number
   // of successful test parts and the number of failed test parts.
   int total_part_count() const;
 

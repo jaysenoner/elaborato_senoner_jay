@@ -29,7 +29,7 @@ void BankAccount::writeTransaction(const Transaction &transaction) {
     transactionsFile << " alle ";
     transactionsFile << transaction.getTHour().hourToString() << std::endl;
     transactionsFile << transaction.getIban() << std::endl;
-    transactionsFile << "EUR " << transaction.getSum() << std::endl;
+    transactionsFile << "EUR " << transaction.getAmount() << std::endl;
     transactionsFile << std::endl;
     transactionsFile.close();
     updateAccount(transaction);
@@ -39,7 +39,7 @@ void BankAccount::writeTransaction(const Transaction &transaction) {
 
 //Private method that updates the total balance of the account and determines if the account is in the red
 void BankAccount::updateAccount(const Transaction &transaction) {
-    totalBalance = BankAccount::readTotalBalance() + transaction.getSum();
+    totalBalance = BankAccount::readTotalBalance() + transaction.getAmount();
     writeTotalBalance();
     if(totalBalance<0)
         isInTheRed = true;

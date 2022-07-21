@@ -8,24 +8,38 @@ int Date::getDay() const {
     return day;
 }
 
-void Date::setDay(int day) {
-    Date::day = day;
+bool Date::setDay(int day) {
+    if(day > 0 && day <= getMaxNumOfDays(month, year)){
+        Date::day = day;
+        return true;
+    }
+    else return false;
+
 }
 
 int Date::getMonth() const {
     return month;
 }
 
-void Date::setMonth(int month) {
-    Date::month = month;
+bool Date::setMonth(int month) {
+    if( month > 0 && month <= 12){
+        Date::month = month;
+        return true;
+    }
+    else return false;
+
 }
 
 int Date::getYear() const {
     return year;
 }
 
-void Date::setYear(int year) {
-    Date::year = year;
+bool Date::setYear(int year) {
+    if(year > minimum_date_year && year <= current_date_year){
+        Date::year = year;
+        return true;
+    }
+    else return false;
 }
 
 //Prints the date in the standard italian format

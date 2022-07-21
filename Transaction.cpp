@@ -11,8 +11,8 @@ const std::string &Transaction::getDescription() const {
 }
 
 
-float Transaction::getSum() const {
-    return sum;
+float Transaction::getAmount() const {
+    return amount;
 }
 
 
@@ -27,7 +27,7 @@ const Date &Transaction::getDate() const {
     return date;
 }
 
-const Hour Transaction::getTHour() const {
+Hour Transaction::getTHour() const {
     return t_hour;
 }
 

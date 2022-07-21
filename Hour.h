@@ -25,8 +25,8 @@ public:
 
     }
     std::string hourToString() const;
-    void setHour(int hour);
-    void setMin(int min);
+    bool setHour(int hour);
+    bool setMin(int min);
     bool operator==(const Hour& right) const;
 
 };

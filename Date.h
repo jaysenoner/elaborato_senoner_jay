@@ -41,11 +41,11 @@ public:
 
     //Getters and Setters
     int getDay() const;
-    void setDay(int day);
+    bool setDay(int day);
     int getMonth() const;
-    void setMonth(int month);
+    bool setMonth(int month);
     int getYear() const;
-    void setYear(int year);
+    bool setYear(int year);
     bool operator==(const Date& d) const;
 
 };

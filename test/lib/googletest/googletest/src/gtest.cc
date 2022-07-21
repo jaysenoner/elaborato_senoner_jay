@@ -396,9 +396,9 @@ uint32_t Random::Generate(uint32_t range) {
 // Google Test before calling RUN_ALL_TESTS().
 static bool GTestIsInitialized() { return GetArgvs().size() > 0; }
 
-// Iterates over a vector of TestSuites, keeping a running sum of the
+// Iterates over a vector of TestSuites, keeping a running amount of the
 // results of calling a given int-returning method on each.
-// Returns the sum.
+// Returns the amount.
 static int SumOverTestSuiteList(const std::vector<TestSuite*>& case_list,
                                 int (TestSuite::*method)() const) {
   int sum = 0;
@@ -2397,7 +2397,7 @@ bool TestResult::HasNonfatalFailure() const {
   return CountIf(test_part_results_, TestPartNonfatallyFailed) > 0;
 }
 
-// Gets the number of all test parts.  This is the sum of the number
+// Gets the number of all test parts.  This is the amount of the number
 // of successful test parts and the number of failed test parts.
 int TestResult::total_part_count() const {
   return static_cast<int>(test_part_results_.size());

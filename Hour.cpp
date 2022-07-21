@@ -19,12 +19,22 @@ std::string Hour::hourToString() const {
     return tmpString;
 }
 
-void Hour::setHour(int hour) {
-    Hour::hour = hour;
+bool Hour::setHour(int hour) {
+    if(hour>=0 && hour<24){
+        Hour::hour = hour;
+        return true;
+    }
+    else return false;
+
+
 }
 
-void Hour::setMin(int min) {
-    Hour::min = min;
+bool Hour::setMin(int min) {
+    if(min>=0 && min<60) {
+        Hour::min = min;
+        return true;
+    }
+    else return false;
 }
 
 bool Hour::operator==(const Hour &right) const{

@@ -7,7 +7,7 @@
 HANDLE he = GetStdHandle(STD_OUTPUT_HANDLE);
 
 // TODO: Use this method to print charges in red and accreditations in green
-// (Possible solutions): use string streams when reading the file,extract the floating point sum value, then call this
+// (Possible solutions): use string streams when reading the file,extract the floating point amount value, then call this
 // method before printing
 // Make so that the data is constantly held in a list, so we have easy access to it
 

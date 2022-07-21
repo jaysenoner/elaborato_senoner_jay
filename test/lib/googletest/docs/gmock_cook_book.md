@@ -2250,8 +2250,8 @@ class MockFoo : public Foo {
 };
 
 char SignOfSum(int x, int y) {
-  const int sum = x + y;
-  return (sum > 0) ? '+' : (sum < 0) ? '-' : '0';
+  const int amount = x + y;
+  return (amount > 0) ? '+' : (amount < 0) ? '-' : '0';
 }
 
 TEST_F(FooTest, Test) {

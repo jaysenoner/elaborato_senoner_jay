@@ -1192,7 +1192,7 @@ Contains information about the result of a single test.
 
 `int TestResult::total_part_count() const`
 
-Gets the number of all test parts. This is the sum of the number of successful
+Gets the number of all test parts. This is the amount of the number of successful
 test parts and the number of failed test parts.
 
 ##### test_property_count {#TestResult::test_property_count}

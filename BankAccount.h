@@ -40,6 +40,7 @@ public:
         transactionsFile.close();
 
     }
+    // TODO: modificare transazione,cercare e cancellare
     void readTransactionsFile();
     void writeTransaction(const Transaction& transaction);
     float readTotalBalance();
