@@ -87,7 +87,7 @@ void BankAccount::writeTotalBalance() {
             tmp_out.open("src/tmp_file.txt");
             if(!filein || !tmp_out) std::cerr<<"Error opening files"<<std::endl;
             else {
-                tmp_out <<std::fixed << std::setprecision(precision)<< newFirstLine <<std::endl ;
+                tmp_out << newFirstLine <<std::endl ;
                 int c = 0;
                 while(std::getline(filein,tmpString)){
                     if(c!=0){
@@ -109,6 +109,113 @@ void BankAccount::writeTotalBalance() {
 
 const std::string &BankAccount::getMyIban() const {
     return myIban;
+}
+
+void BankAccount::loadTransactionList() {
+    std::ifstream file;
+    file.open("src/transactions_file.txt",std::ios::in);
+    std::stringstream ss;
+    std::string line;
+    std::string description;
+    std::string iban;
+    int day,month,year,hour,min;
+    float amount;
+    char dumb_char;
+    std::string dumb_string;
+
+    int c = 0; // to skip the first line
+    while(getline(file,line))
+    {
+        if(c!=0)
+            if(!line.empty())
+            {
+
+                description = line;
+                getline(file,line);
+                ss.clear();
+                ss << line;
+                ss >> day >>dumb_char >> month >> dumb_char >> year >> dumb_char >> dumb_string >> hour >> dumb_char >> min;
+                getline(file,iban);
+                getline(file,line);
+                amount = extractFloatFromString(line);
+                transactionList.emplace_back(description,amount,iban,day,month,year,hour,min);
+
+
+            }
+        c++;
+    }
+    file.close();
+
+}
+
+void BankAccount::updateTransaction(const std::string &description) {
+    auto it = searchTransaction(description);
+    std::string newDescription;
+    std::cout<<"Insert the new description"<<std::endl;
+    std::cin >> newDescription;
+    it->setDescription(newDescription);
+
+}
+
+
+
+void BankAccount::deleteTransaction(const std::string &description) {
+
+    transactionList.erase(searchTransaction(description));
+
+
+}
+
+void BankAccount::saveTransactionList() {
+
+
+    totalBalance = BankAccount::readTotalBalance();
+    std::ofstream tmp_out;
+    tmp_out.open("src/tmp_file.txt");
+    tmp_out << "Total Balance: EUR " +std::to_string(totalBalance)+ ";" << std::endl;
+    for(const auto& transaction: transactionList){
+
+        tmp_out << transaction.getDescription() << std::endl;
+        tmp_out << transaction.getDate().dateToString();
+        tmp_out << " alle ";
+        tmp_out << transaction.getTHour().hourToString() << std::endl;
+        tmp_out << transaction.getIban() << std::endl;
+        tmp_out << "EUR " << transaction.getAmount() << std::endl;
+        tmp_out << std::endl;
+
+    }
+
+    tmp_out.close();
+    transactionsFile.close();
+    remove("src/transactions_file.txt");
+    rename("src/tmp_file.txt","src/transactions_file.txt");
+    transactionsFile.open("src/transactions_file.txt");
+
+
+
+
+}
+
+void BankAccount::printTransactionsList() {
+    for(auto i : transactionList)
+        i.printTransaction();
+
+}
+
+const Transaction& BankAccount::addTransaction(const Transaction& transaction) {
+        transactionList.push_back(transaction);
+        return transaction;
+}
+
+std::list<Transaction>::iterator BankAccount::searchTransaction(const std::string& description) {
+
+    auto it = transactionList.begin();
+    while(it!=transactionList.end()){
+        if(it->getDescription() == description)
+            break;
+        it++;
+    }
+    return it;
 }
 
 

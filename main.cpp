@@ -26,7 +26,7 @@ int main() {
 
     Date * date;
     Hour * hour;
-    Transaction * t;
+
     bool exit = false;
     bool dateFailed = false;
     bool hourFailed = false;
@@ -34,19 +34,8 @@ int main() {
     int d, m, y;
     std::string description;
     float sum;
+    myBank.loadTransactionList();
 
-
-/*
-
-    Date da(17,9,1999);
-    Hour ha(13,29);
-    Transaction ta("Acquisto presso apple",1000,"IT734284728293743298",da,ha);
-
-    myBank.writeTransaction(ta);
-    myBank.writeTransaction(ta);
-    myBank.readTransactionsFile();
-
-*/
 
 
 
@@ -59,8 +48,9 @@ int main() {
         std::cout<<"===================================================== "<<std::endl;
         std::cout<<"Menu:" << std::endl;
         std::cout<<"  Press 1 to register a new transaction "<<std::endl;
-        std::cout<<"  Press 2 to print the file content to the console  " << std::endl;
-        std::cout<<"  Press 3 to exit "<<std::endl;
+        std::cout<<"  Press 2 to print the transactions list content to the console  " << std::endl;
+        std::cout<<"  Press 3 to print the transactions file content to the console "<<std::endl;
+        std::cout<<"  Press 4 to exit"<<std::endl;
         std::cout<<"===================================================== "<<std::endl;
         std::cin>>choice;
 
@@ -100,7 +90,7 @@ int main() {
                     std::cin >> d >> slash >> m ;
                     try{
                         hour = new Hour(d,m);
-                        hourFailed = false;
+
                     }
                     catch (std::runtime_error &e) {
                         std::cerr << e.what() << std::endl;
@@ -109,23 +99,29 @@ int main() {
                     }
                 }while(hourFailed);
 
-                t = new Transaction(description,sum,myBank.getMyIban(),*date,*hour);
 
-                myBank.writeTransaction(*t);
+                 //adds the transaction to the list and saves it in the file,while updating total balance;
+                myBank.writeTransaction( myBank.addTransaction(Transaction(description, sum, myBank.getMyIban(), *date, *hour)));
                 break;
 
-            //Prints all the content of the transactions file to the console
+            //Prints all the content of the transactions list to the console
             case 2:
                 //system("cls"); // TODO: replace with safer console clearing
-                myBank.readTransactionsFile();
+
+                myBank.printTransactionsList();
+
 
                 break;
 
             case 3:
-                exit = true;
+                myBank.readTransactionsFile();
 
                 break;
 
+            case 4:
+                myBank.saveTransactionList();
+                exit = true;
+                break;
             default:
                 std::cout<<"Please insert a valid command"<<std::endl;
             break;

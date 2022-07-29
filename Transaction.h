@@ -24,18 +24,18 @@ class Transaction {
     public:
         Transaction() = default;
         ~Transaction() = default;
-        Transaction(std::string description,float sum,std::string iban,int day,int month,int year,int hour,int min) :
-                description(std::move(description)), amount(sum), iban(std::move(iban)), date(day, month, year), t_hour(hour, min) {
+        Transaction(const std::string& description,float sum,const std::string& iban,int day,int month,int year,int hour,int min) :
+                description(description), amount(sum), iban(iban), date(day, month, year), t_hour(hour, min) {
             if(sum<0) isACharge = true;
             else isACharge = false;
         };
-        Transaction(std::string description,float sum,std::string iban,Date& date,Hour& hour) :
-                description(std::move(description)), amount(sum), iban(std::move(iban)), date(date), t_hour(hour) {
+        Transaction(const std::string& description,float sum,const std::string& iban,Date& date,Hour& hour) :
+                description(description), amount(sum), iban(iban), date(date), t_hour(hour) {
                     if(sum<0) isACharge = true;
                     else isACharge = false;
         };
 
-
+        void printTransaction();
 
 
         //Getters and Setters
@@ -45,6 +45,8 @@ class Transaction {
         const Date &getDate() const;
         Hour getTHour() const;
         bool isACharge1() const;
+
+    void setDescription(const std::string &description);
 
 };
 

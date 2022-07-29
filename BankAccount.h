@@ -16,16 +16,19 @@ class BankAccount {
 
 private:
 
-    const int precision = 2;
+    std::list<Transaction> transactionList;
+
     float totalBalance;
     bool isInTheRed;
     std::fstream transactionsFile;
     std::string myIban;
     void updateAccount(const Transaction &transaction);
+    std::list<Transaction>::iterator searchTransaction(const std::string& description);
+
 
 public:
 
-    explicit BankAccount(std::string myIban,float totalBalance=0,bool isInTheRed=false) :myIban(std::move(myIban)), totalBalance(totalBalance), isInTheRed(isInTheRed) {
+    explicit BankAccount(const std::string& myIban,float totalBalance=0,bool isInTheRed=false) :myIban(myIban), totalBalance(totalBalance), isInTheRed(isInTheRed) {
         transactionsFile.open("src/transactions_file.txt",std::ios::app | std::ios::in);
         if(!transactionsFile.is_open()){
 
@@ -36,11 +39,33 @@ public:
             if(totalBalance<0) this->isInTheRed = true;
         }
     };
+     BankAccount(const std::string& myIban,const std::string& path,float totalBalance=0,bool isInTheRed=false) :myIban(myIban), totalBalance(totalBalance), isInTheRed(isInTheRed) {
+        transactionsFile.open(path,std::ios::app | std::ios::in);
+        if(!transactionsFile.is_open()){
+
+            throw std::runtime_error("Failed to open transactions file");
+        }
+        else {
+            totalBalance = BankAccount::readTotalBalance();
+            if(totalBalance<0) this->isInTheRed = true;
+        }
+    };
+
+
     ~BankAccount(){
         transactionsFile.close();
 
     }
     // TODO: modificare transazione,cercare e cancellare
+    void loadTransactionList();
+    void updateTransaction(const std::string& description);
+
+    void deleteTransaction(const std::string& description);
+
+    void saveTransactionList();
+    void printTransactionsList();
+    const Transaction& addTransaction(const Transaction& transaction);
+    int getTransactionListSize() { return transactionList.size();}
     void readTransactionsFile();
     void writeTransaction(const Transaction& transaction);
     float readTotalBalance();
