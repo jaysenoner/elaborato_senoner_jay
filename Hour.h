@@ -14,20 +14,24 @@ private:
     int min;
 public:
     Hour() = default;
-    Hour(int hour ,int min ) {
-        if( (hour>=0 && hour<24 ) && (min>=0 && min<60)){
+
+    Hour(int hour, int min) {
+        if ((hour >= 0 && hour < 24) && (min >= 0 && min < 60)) {
             this->hour = hour;
             this->min = min;
-        }
-        else {
+        } else {
             throw std::runtime_error("Insert a valid hour!");
         }
 
     }
+
     std::string hourToString() const;
+
     bool setHour(int hour);
+
     bool setMin(int min);
-    bool operator==(const Hour& right) const;
+
+    bool operator==(const Hour &right) const;
 
 };
 

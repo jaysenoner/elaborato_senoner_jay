@@ -19,6 +19,6 @@ protected:
 };
 
 TEST_F(TransactionTests,TransactionConstructor){
-    t = Transaction("test",-1000,"test",d,h);
+    t = Transaction("test", -1000, "test", d, h);
     EXPECT_EQ(true,t.isACharge1());
 }

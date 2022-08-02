@@ -7,13 +7,13 @@
 #include "../Date.h"
 
 
-TEST(DateTest,TestIsValidDate) {
+TEST(DateTest, TestIsValidDate) {
 
-    ASSERT_EQ(true,Date::isValidDate(17,9,1999));
-    EXPECT_EQ(false,Date::isValidDate(35,-3,1859));
-    EXPECT_EQ(false,Date::isValidDate(17,-3,1999));
-    EXPECT_EQ(false,Date::isValidDate(35,3,1999));
-    EXPECT_EQ(false,Date::isValidDate(1,3,1000));
+    ASSERT_EQ(true, Date::isValidDate(17, 9, 1999));
+    EXPECT_EQ(false, Date::isValidDate(35, -3, 1859));
+    EXPECT_EQ(false, Date::isValidDate(17, -3, 1999));
+    EXPECT_EQ(false, Date::isValidDate(35, 3, 1999));
+    EXPECT_EQ(false, Date::isValidDate(1, 3, 1000));
 
 }
 
